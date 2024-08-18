@@ -2,11 +2,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/user/UserContext";
 import { API_URL_BASE } from "../assets/Proxy";
+import Spinner from "../components/Spinner";
 
 const Signup = () => {
 
-  const { signUpUser, message, login, user } = useContext(UserContext)
+  const { signUpUser, message, login, user, getUser, loading } = useContext(UserContext)
   const navigate = useNavigate();
+  const token = localStorage.getItem('auth_cbt_token')
   const [userData, setUserData] = useState({
     name: '',
     email: '',
@@ -51,6 +53,10 @@ const Signup = () => {
   }, [message, login, navigate])
 
   useEffect(() => {
+    if(token){
+      getUser()
+    }
+
     if(user !== null){
       navigate('/')
     }
@@ -62,13 +68,14 @@ const Signup = () => {
 
   return (
     <>
+      {loading && <Spinner />}
       <div className="w-full bg-gray-50">
-        <div className="heading w-11/12 sm:10/12 m-auto text-center pt-5">
-          <p className="font-mono text-4xl text-green-500 font-bold">Sign Up</p>
-          <p className="font-semibold mt-2 space-grotesk">
-            Ahmadu Bello University Zaria Post UTME Demo Exams
-          </p>
-        </div>
+      <div className="heading w-10/12 sm:10/12 m-auto text-center pt-5">
+        <p className="font-mono text-xl text-green-500 font-bold  space-grotesk">Sign In</p>
+        <p className="font-semibold text-2xl mt-2 space-grotesk">
+          Practice Post UTME Demo Exams
+        </p>
+      </div>
         <div className="body-form w-80 m-auto sm:10/12 text-center pt-5">
           <form action="" className="text-left" onSubmit={registerUser}>
             <div className="">

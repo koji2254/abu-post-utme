@@ -297,6 +297,7 @@ const ExamsActive = () => {
           const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
           setCountDown(`${hours}:${minutes}:${seconds < 10 ? "0" : ""}${seconds}`);
+          console.log(seconds)
         } else {
           clearInterval(interval);
           setCountDown("Time's up!");
@@ -395,19 +396,16 @@ const ExamsActive = () => {
                       <small>
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension ? singleQuestion.comprehension : ''}
                       </small>
-                      <p className="text-gray-500">
-
+                      <p className="text-gray-500 text-base">
                         Question <span>{singleIndex + 1}</span>
-                      
                       </p>
                       <p className="text-gray-900 font-semibold">
                         {/* {singleQuestion && singleQuestion.question_value} */}
-                        {singleQuestion && renderMath(singleQuestion.question_value) }
-                       
+                        {singleQuestion && renderMath(singleQuestion.question_value) }                       
                       </p>
                       
                     </div>
-                    <div className="options-body mt-3">
+                    <div className="options-body mt-3 text-sm md:text-base">
                       <ul question_id={singleQuestion && singleQuestion.question_id} >
                         {singleQuestion && singleQuestion.options.map((option, optionIndex) => (
                           <li key={optionIndex} question_id={singleQuestion && singleQuestion.question_id} className="w-full bg-gray flex items-center p-1 mt-1 hover:bg-green-100">
@@ -419,7 +417,7 @@ const ExamsActive = () => {
                                 // value={option}
                                 value={option}
                                 onClick={(e) => optionPick(e, singleQuestion && singleQuestion.question_id, option)}
-                                className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                className="w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500"
                               />
                             </span>
                             <p>{renderMath(option)}</p>

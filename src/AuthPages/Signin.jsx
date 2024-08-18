@@ -5,7 +5,7 @@ import { UserContext } from "../context/user/UserContext";
 import { API_URL_BASE } from "../assets/Proxy";
 
 const Signin = () => {
-  const { login, loginUser, user } = useContext(UserContext)
+  const { login, loginUser, user, loading  } = useContext(UserContext)
 
   const navigate = useNavigate();
 
@@ -61,6 +61,7 @@ const Signin = () => {
 
   return (
     <>
+    {loading && <Spinner /> }
     <div className="w-full h-screen bg-gray-50">
       <div className="heading w-10/12 sm:10/12 m-auto text-center pt-5">
         <p className="font-mono text-xl text-green-500 font-bold  space-grotesk">Sign In</p>
