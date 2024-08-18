@@ -162,7 +162,7 @@ const SubjectCombination = () => {
           <div className='grid grid-cols-2 gap-3'>
             <GreenBtn className='bg-pr-green' onClick={submitSubjectCombination} text='SUBMIT COMBINATION' />
             <NavLink className='bg-white hover:bg-green-100 border border-gray-800 rounded text-green-600' to={'/'}>
-             <button className='w-full h-full space-grotesk'>Cancle</button>    
+             <button className='w-full h-full space-grotesk'>Cancel</button>    
             </NavLink>
           </div>
       </div>

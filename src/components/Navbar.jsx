@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -40,7 +41,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="mx-1 my-1 bg-gray-800 p-3 rounded">
+      <div className="mx-1 my-1 mt-1 bg-gray-800 p-3 rounded">
         <div className="w-full flex justify-between items-center py-1 px-3">
           <div className="logo-icon">
             <NavLink to='/' className="flex items-center gap-1">

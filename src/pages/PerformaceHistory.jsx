@@ -58,14 +58,17 @@ const PerformanceHistory = () => {
   
 
   return (
-    <div className="overal-section w-full">
+    <div className="h-screen overal-section w-full">
       {loading && <Spinner />}
       <div className="md:w-8/12 m-3">
       <div className="flex items-center">
         <h1 className="font-mono text-lg font-bold">Exams History: </h1> 
-        <NavLink to='/exam-step' className='text-gray-900 font-semibold p-2 text-xs rounded underline'>
+        {/* <NavLink to='/exam-step' className='text-gray-900 font-semibold p-2 text-xs rounded underline'>
           New Exam
-        </NavLink>
+        </NavLink> */}
+        <a href='/exam-step' className='text-gray-900 font-semibold p-2 text-xs rounded underline'>
+          New Exam
+        </a>
       </div>
         
         <div className="history-container">

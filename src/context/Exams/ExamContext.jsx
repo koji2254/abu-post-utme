@@ -12,7 +12,7 @@ export const ExamProvider = ({children}) => {
 
    const [message, setMessage] = useState(null)
    const token = localStorage.getItem('auth_cbt_token')
-   const [loading, setLoading] = useState(true)
+   const [loading, setLoading] = useState(false)
    const [examsHistory,setExamsHistory] = useState([])
    const [examDetails,setExamDetails ] = useState(null)
    const [allGeneralQuestions,setAllGeneralQuestions] = useState([])
@@ -160,7 +160,6 @@ export const ExamProvider = ({children}) => {
           setSubmitted(false)
         },2000)
       }
-      
     }).catch((error) => {
       console.log(error)
       alert(error.data.message)
@@ -197,6 +196,7 @@ export const ExamProvider = ({children}) => {
     .catch((error) => {
      
       console.error('Failed to fetch user data', error);
+      setLoading(false)
     }).finally(() => {
       setLoading(false)
     })

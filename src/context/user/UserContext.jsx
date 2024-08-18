@@ -129,6 +129,7 @@ export const UserProvider = ({ children }) => {
       .then(response => {
         setProfileData(response.data.profile);
         // console.log(response.data.profile)
+        setLoading(false)
       })
       .catch(error => {
         console.error('Failed to fetch user data', error);

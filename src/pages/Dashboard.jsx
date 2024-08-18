@@ -11,29 +11,23 @@ const Dashboard = () => {
   const token = localStorage.getItem('auth_cbt_token')
   const navigate = useNavigate();
 
-  const { loginStatus, user, getUser, loading,setPageUrl, pageUrl }  = useContext(UserContext)
+  const { loginStatus, user, getUser, loading, setPageUrl, pageUrl }  = useContext(UserContext)
   const { getSubjectCombination, getSubjectList } = useContext(SubjectCombinationContext)
   
   setPageUrl(location.pathname)
 
   //*********************** */ 
   useEffect(() => {
-    if(token === null){
-      return navigate('/signin')
-    }
-
-    if(user === null){
-      getUser()
-    }
-    
-    getSubjectList()
-  }, [])
-
-  useEffect(() => {
-    if(loginStatus === false){
+    if(token){
+      if(user === null){
+        getUser()
+     }
+    }else {
       navigate('/signin')
     }
-  }, [loginStatus])
+
+    getSubjectList()
+  }, [])
 
   // ************************ /
 
