@@ -14,13 +14,10 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [profileData, setProfileData] = useState(null)
 
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [loginStatus, setLoginStatus] = useState(true)
   const [pageUrl, setPageUrl] = useState(location.pathname)
-
-
-
 
   //  . . . . . . . . . 
   const getUser  = () => {
