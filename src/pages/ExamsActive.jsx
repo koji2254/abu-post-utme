@@ -348,7 +348,7 @@ const ExamsActive = () => {
 
   return (
     <>
-      <div className="overal body w-full">
+      <div className="w-full">
        { <img src="../question-images/993838939383940896.png" alt="" /> }
        {/* { renderMath(inlineFormula) } */}
       {/* <InlineMath math={inlineFormula} /> */}
@@ -381,7 +381,7 @@ const ExamsActive = () => {
         </div>
       </div>
 
-      <section className="w-11/12 gap-1 md:w-11/12 p-0 m-auto mt-1 md:p-5 m-auto flex flex-col-reverse md:flex md:flex-row items-start">
+      <section className="h-screen w-11/12 gap-1 md:w-11/12 p-0 m-auto mt-1 md:p-5 m-auto flex flex-col-reverse md:flex md:flex-row items-start">
         <div className="border m-auto w-full p-1">
           <div className="question-container ">
             <div id='questions-body' className="questions-body w-full pr-2">
@@ -393,9 +393,9 @@ const ExamsActive = () => {
                       <p className='font-bold'>
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension_title ? singleQuestion.comprehension_title : ''}
                       </p>
-                      <small>
+                      <p className='text-base'>
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension ? singleQuestion.comprehension : ''}
-                      </small>
+                      </p>
                       <p className="text-gray-500 text-base">
                         Question <span>{singleIndex + 1}</span>
                       </p>
