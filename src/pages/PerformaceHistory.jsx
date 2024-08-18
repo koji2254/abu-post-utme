@@ -20,10 +20,11 @@ const PerformanceHistory = () => {
   useEffect(() => {
     if(!token){
       navigate('/signin')
-    }
-    if(user === null){
+    
+    }else if(user === null){
       getUser()
     }
+
   },[])
 
   
@@ -39,7 +40,6 @@ const PerformanceHistory = () => {
 
     // window.location.assign(`http://127.0.0.1:8000/custom-correction/${exams_id}`)
     navigate(`/correction/${exams_id}`)
-    // window.location.href = `http://127.0.0.1:8000/custom-correction/${user.user_id}/${exams_id}/${token}`
   }
 
   function formatDateToDayMonth(dateString) {
@@ -52,10 +52,6 @@ const PerformanceHistory = () => {
       month: "2-digit",
       separator: "/",
     });
-  
-    // Alternative using strftime (requires moment.js library)
-    // const moment = require('moment'); // If you're using moment.js
-    // const formattedDate = moment(dateString).format("DD/MM");
   
     return formattedDate;
   }

@@ -6,7 +6,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
-import axios from 'axios';
 import GreenBtn from '../components/GreenBtn';
 import { UserContext } from '../context/user/UserContext';
 import { SubjectCombinationContext } from '../context/subjectCombination/SubjectCombinationContext';
@@ -19,19 +18,16 @@ const SubjectCombination = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) {
-      navigate('/signin');
-    } 
-    
-    if(user === null) {
-      getUser();
-      if(subjectList.length === 0){
-        getSubjectList();
+    if(token){
+      if(!user) {
+        getUser();
+        if(subjectList.length === 0){
+          getSubjectList();
+        }
       }
     }
 
   }, []); // Empty dependency array ensures this runs only once on mount
-
 
   useEffect(() => {
     if (user && user.user_id) {
@@ -39,19 +35,7 @@ const SubjectCombination = () => {
          getSubjectCombination(user.user_id);
       }
     }
-
-    if(user === null){
-      navigate('/signin')
-    }
   }, [user]); // This runs only when user.user_id changes
-
-  
-  useEffect(() => {
-    if(loginStatus === false){
-      navigate('/signin')
-    }
-
-  }, [loginStatus])
 
   const [subjectOne, setSubjectOne] = useState('ENGLISH LANGUAGE');
   const [subjectTwo, setSubjectTwo] = useState(subjectSet?.subject_two || '');
@@ -102,7 +86,7 @@ const SubjectCombination = () => {
   };
 
   return (
-    <div className=''>
+    <div className='h-screen'>
       {loading && <Spinner />}
       <div className="mx-1 shadow rounded space-grotesk bg-green-50 p-2">
         <h1 className='text-lg font-semibold'>Select your subject combination:</h1>

@@ -29,23 +29,16 @@ const Dashboard = () => {
     getSubjectList()
   }, [])
 
-
   useEffect(() => {
     if(loginStatus === false){
       navigate('/signin')
     }
   }, [loginStatus])
 
-  useEffect(() => {
-    // if(user === null){
-    //   navigate('/signin')
-    // }
-  }, [user])
-
   // ************************ /
 
   return (
-    <div className="">
+    <div className="h-screen">
       {loading && <Spinner />}
       <div className="shadow m-auto mx-1 rounded bg-green-50 p-2 px-5">
         <div className="flex items-center justify-between">
