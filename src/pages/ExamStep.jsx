@@ -9,6 +9,7 @@ import Card from '../components/Card'
 import { UserContext } from "../context/user/UserContext";
 import { SubjectCombinationContext } from '../context/subjectCombination/SubjectCombinationContext'
 import { ExamContext } from '../context/Exams/ExamContext'
+import { API_URL_BASE } from '../assets/Proxy'
 
 const ExamStep = () => {
    const navigate = useNavigate()
@@ -111,10 +112,10 @@ const ExamStep = () => {
             user_id: user.user_id,
             exam_type: examType
          }
-         url = `http://127.0.0.1:8000/api/exam-step`
+         url = `${API_URL_BASE}/api/exam-step`
          hrefLocation = `/active-exam`
-         // hrefLocation = `http://127.0.0.1:8000/custom-exam/${user.user_id}/${token}`
-         // hrefLocation = 'http://127.0.0.1:8000/custom-exam'
+         // hrefLocation = `${API_URL_BASE}/custom-exam/${user.user_id}/${token}`
+         // hrefLocation = '${API_URL_BASE}/custom-exam'
 
       }else if(examType === 'custom') {
 
@@ -189,9 +190,9 @@ const ExamStep = () => {
             ...exam_properties,
           };
 
-         url = 'http://127.0.0.1:8000/api/set-custom-exams'
+         url = `${API_URL_BASE}/api/set-custom-exams`
          hrefLocation = '/custom-exam'
-         // hrefLocation = `http://127.0.0.1:8000/custom-exam/${user.user_id}/${token}`
+         // hrefLocation = `{API_URL_BASE}/custom-exam/${user.user_id}/${token}`
          // return console.log(examData)
       }
       setLoading(true)
