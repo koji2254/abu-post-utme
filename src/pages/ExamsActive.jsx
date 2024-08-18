@@ -393,7 +393,7 @@ const ExamsActive = () => {
                       <p className='font-bold text-gra-950'>
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension_title ? singleQuestion.comprehension_title : ''}
                       </p>
-                      <p className='text-base text-gray-800'>
+                      <p className='text-base text-black'>
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension ? singleQuestion.comprehension : ''}
                       </p>
                       <p className="text-gray-500 text-base">
@@ -405,7 +405,7 @@ const ExamsActive = () => {
                       </p>
                       
                     </div>
-                    <div className="options-body mt-3 text-sm md:text-base">
+                    <div className="options-body mt-3 text-black text-sm md:text-base">
                       <ul question_id={singleQuestion && singleQuestion.question_id} >
                         {singleQuestion && singleQuestion.options.map((option, optionIndex) => (
                           <li key={optionIndex} question_id={singleQuestion && singleQuestion.question_id} className="w-full bg-gray flex items-center p-1 mt-1 hover:bg-green-100">
