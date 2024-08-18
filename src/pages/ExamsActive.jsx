@@ -390,10 +390,10 @@ const ExamsActive = () => {
               ) : (
                   <div key={singleQuestion && singleQuestion.question_id} className="questions-single bg-gray-50 rounded p-2 mt-1">
                     <div className="question-header">
-                      <p className='font-bold'>
+                      <p className='font-bold text-gra-950'>
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension_title ? singleQuestion.comprehension_title : ''}
                       </p>
-                      <p className='text-base'>
+                      <p className='text-base text-gray-800'>
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension ? singleQuestion.comprehension : ''}
                       </p>
                       <p className="text-gray-500 text-base">
