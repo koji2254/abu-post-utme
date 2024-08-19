@@ -73,11 +73,11 @@ const Signin = () => {
         <form action="" className="text-left">
         <div className="mt-3">
               <label htmlFor="email" className="font-bold block text-xs text-gray-600 my-1">Email</label>
-              <input type="email" name="email" onChange={onchange} value={email} className="p-1.5 border rounded border-gray-400 border-1 w-full"/>
+              <input type="email" name="email" onChange={onchange} value={email} className="p-1.5 border rounded bg-white text-black border-gray-400 border-1 w-full"/>
             </div>
             <div className="mt-3">
               <label htmlFor="password" className="font-bold block text-xs text-gray-600 my-1">Password</label>
-              <input type="password" name="password" onChange={onchange} value={password} className="p-1.5 border rounded border-gray-400 border-1 w-full"/>
+              <input type="password" name="password" onChange={onchange} value={password} className="p-1.5 border rounded border-gray-400 bg-white text-black border-1 w-full"/>
             </div>
           <div className="mt-3">
             <button onClick={submitLogin} className="w-full rounded py-2 border-none bg-pr-green text-gray-50 font-mono ">

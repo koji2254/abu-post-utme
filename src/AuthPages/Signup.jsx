@@ -69,7 +69,7 @@ const Signup = () => {
   return (
     <>
       {loading && <Spinner />}
-      <div className="w-full bg-gray-50">
+      <div className="h-screen w-full bg-gray-50">
       <div className="heading w-10/12 sm:10/12 m-auto text-center pt-5">
         <p className="font-mono text-xl text-green-500 font-bold  space-grotesk">Sign In</p>
         <p className="font-semibold text-2xl mt-2 space-grotesk">
@@ -80,19 +80,19 @@ const Signup = () => {
           <form action="" className="text-left" onSubmit={registerUser}>
             <div className="">
               <label htmlFor="name" className="font-bold block text-xs text-gray-600 my-1">Full Name</label>
-              <input type="text" name="name" onChange={onchange} value={name} className="p-1.5 border rounded border-gray-400 border-2 w-full"/>
+              <input type="text" name="name" onChange={onchange} value={name} className="p-1.5 border rounded border-gray-400 border-2 w-full bg-white text-black"/>
             </div>
             <div className="mt-3">
               <label htmlFor="email" className="font-bold block text-xs text-gray-600 my-1">Email</label>
-              <input type="email" name="email" onChange={onchange} value={email} className="p-1.5 border rounded border-gray-400 border-2 w-full"/>
+              <input type="email" name="email" onChange={onchange} value={email} className="p-1.5 border rounded border-gray-400 border-2 w-full bg-white text-black"/>
             </div>
             <div className="mt-3">
               <label htmlFor="password" className="font-bold block text-xs text-gray-600 my-1">Password</label>
-              <input type="password" name="password" onChange={onchange} value={password} className="p-1.5 border rounded border-gray-400 border-2 w-full"/>
+              <input type="password" name="password" onChange={onchange} value={password} className="p-1.5 border rounded border-gray-400 border-2 w-full bg-white text-black"/>
             </div>
             <div className="mt-3">
               <label htmlFor="password_confirmation" className="font-bold block text-xs text-gray-600 my-1">Confirm Password</label>
-              <input type="password" name="password_confirmation" onChange={onchange} value={password_confirmation} className="p-1.5 border rounded border-gray-400 border-2 w-full"/>
+              <input type="password" name="password_confirmation" onChange={onchange} value={password_confirmation} className="p-1.5 border rounded border-gray-400 border-2 w-full bg-white text-black"/>
             </div>
             <div className="mt-3">
               <button type="submit" className="w-full rounded py-2 border-none bg-green-500 text-gray-50 font-mono">

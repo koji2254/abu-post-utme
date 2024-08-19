@@ -415,11 +415,11 @@ const ExamStep = () => {
          <div className="md:w-8/12 bg-white shadow mx-1 mt-1">
            <Card head={'Rules and Regulations'} body={'ABU POST UTME exams rules include no cheating, punctuality,prohibition of electronic devices, no communication with others, follow invigilator instructions.'} />    
          </div>
-         <div className="md:w-8/12 bg-white m-3">
+         <div className="md:w-8/12 bg-white m-1">
             <div className="flex items-center border gap-2 text-gray-900">
                <p className="bg-white p-3 rounded-lg gap-2 items-center">
                {/* <NavLink to='/exam-active'> */}
-               <GreenBtn onClick={submitExamStep} text='start' />
+               <GreenBtn onClick={submitExamStep} text='Start Exams' />
               {/* </NavLink> */}
                </p> 
              

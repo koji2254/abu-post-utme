@@ -284,8 +284,10 @@ const ExamsActive = () => {
   useEffect(() => {
     if (examDetails && singleQuestion) {
       const timeSet = examDetails.allocated_time; // in minutes
-      const startedTime = new Date(examDetails.created_at); // starting time
+      // const startedTime = new Date(examDetails.created_at); // starting time
+      const startedTime = new Date(Date.parse(examDetails.created_at)); // starting time
       const endTime = new Date(startedTime.getTime() + timeSet * 60 * 1000);
+      // const endTime = new Date(Date.parse(startedTime.getTime() + timeSet * 60 * 1000));
 
       const updateCountDown = () => {
         const now = new Date();
