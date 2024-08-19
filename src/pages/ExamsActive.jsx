@@ -356,9 +356,9 @@ const ExamsActive = () => {
 
       {/* <BlockMath math={blockFormula} /> */}
         {loading && <Spinner />}
-        <div className="flex items-center p-1 py-3 justify-between shadow">
+        <div className="flex items-center p-1 p-3 justify-between shadow">
           <div className="cta-dash-body w-full flex justify-between items-center">
-            <div className="subject-select-container flex items-center text-xs md:text-base w-72 overfloy-x-scroll md:w-full gap-0.5 md:gap-2">
+            <div className="subject-select-container flex items-center text-xs md:text-base overfloy-x-scroll gap-0.5 md:gap-2">
               {subjectCollection.length === 0 ? (
                 <>Loading...</>
               ) : (
@@ -370,11 +370,11 @@ const ExamsActive = () => {
               )}
             </div>
 
-            <div className="full-flex gap-2">
+            <div className="flex flex-col justify-center text-center gap-2 items-center md:flex-row">
               <div id="timing-box" className="font-semibold">
                 <div id="count-down" className="countdown font-mono text-black text-base md:text-lg flex">{countDown}</div>   
               </div>
-              <button onClick={submitExam} className="bg-gray-100 hover:bg-red-500 hover:text-white text-red-600 border border-red-400 p-1   md:p-2 md:px-3 rounded text-sm">
+              <button onClick={submitExam} className="bg-gray-100 hover:bg-red-500 hover:text-white text-red-600 border border-red-400 p-1 md:p-2 md:px-3 rounded text-sm">
                 Submit
               </button>
             </div>
