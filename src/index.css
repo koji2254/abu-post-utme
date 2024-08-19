@@ -9,10 +9,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.h-full {
-  height: 100%;
+  background: #fff;
 }
 
 .font-nunito {

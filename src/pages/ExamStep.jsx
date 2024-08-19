@@ -288,7 +288,7 @@ const ExamStep = () => {
                   </thead>
                   <tbody>
                         <tr className="bg-white border-b text-black">
-                           <th scope="row" className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                           <th scope="row" className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                              {subjectOne}
                            </th>
                            <td className="px-4 py-1">
@@ -297,23 +297,23 @@ const ExamStep = () => {
                                                 
                         </tr>
                         <tr className="bg-white border-b text-black">
-                           <th scope="row" className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                           <th scope="row" className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                               {subjectTwo}
                            </th>
                            <td className="px-4 py-1">
                               40
                            </td>                      
                         </tr>
-                        <tr className="bg-white dark:bg-gray-800">
-                           <th scope="row" className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr className="bg-white text-black">
+                           <th scope="row" className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                               {subjectThree}
                            </th>
                            <td className="px-4 py-1">
                               40
                            </td>
                         </tr>
-                        <tr className="bg-white dark:bg-gray-800">
-                           <th scope="row" className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr className="bg-white text-black">
+                           <th scope="row" className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
                               {subjectFour}
                            </th>
                            <td className="px-4 py-1">
@@ -341,12 +341,12 @@ const ExamStep = () => {
                   </thead>
                   <tbody>
                         <tr className="bg-white border-b text-black">
-                           <th scope="row" className="px-4 py-2 flex gap-2 items-center font-medium text-gray-900 whitespace-nowrap dark:text-white pt-3">
+                           <th scope="row" className="px-4 py-2 flex gap-2 items-center font-medium text-gray-900 whitespace-nowrap pt-3">
                              <input 
                                  type="checkbox" 
                                  checked={checkedOne}
                                  onChange={(e) => setCheckedOne(e.target.checked)}
-                                 className='w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2dark:border-gray-600' /> {subjectOne}
+                                 className='w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded' /> {subjectOne}
                            </th>
                            <td className="px-4 py-2">
                               <input 
@@ -367,12 +367,12 @@ const ExamStep = () => {
                            </td>        
                         </tr>
                         <tr className="bg-white border-b text-black">
-                           <th scope="row" className="px-4 py-2 flex gap-2 items-center font-medium text-gray-900 whitespace-nowrap dark:text-white pt-3">
+                           <th scope="row" className="px-4 py-2 flex gap-2 items-center font-medium text-gray-900 whitespace-nowrap pt-3">
                              <input 
                                  type="checkbox" 
                                  checked={checkedTwo}
                                  onChange={(e) => setCheckedTwo(e.target.checked)}
-                                 className='w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2dark:border-gray-600' /> {subjectTwo}
+                                 className='w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded ' /> {subjectTwo}
                            </th>
                            <td className="px-4 py-2">
                               <input 
@@ -383,13 +383,13 @@ const ExamStep = () => {
                                  className='small-input p-2 h-7 w-16 border border-gray-500' />
                            </td>                      
                         </tr>
-                        <tr className="bg-white border-b dark:bg-gray-800">
-                        <th scope="row" className="px-4 py-2 flex gap-2 items-center font-medium text-gray-900 whitespace-nowrap dark:text-white p-3">
+                        <tr className="bg-white border-b text-black">
+                        <th scope="row" className="px-4 py-2 flex gap-2 items-center font-medium text-gray-900 whitespace-nowrap p-3">
                              <input 
                                  type="checkbox" 
                                  checked={checkedThree}
                                  onChange={(e) => setCheckedThree(e.target.checked)}
-                                 className='w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2dark:border-gray-600' 
+                                 className='w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded ' 
                               /> {subjectThree}
                            </th>
                            <td className="px-4 py-2">
@@ -401,13 +401,13 @@ const ExamStep = () => {
                               className='small-input p-2  h-7 w-16 border border-gray-500' />
                            </td>
                         </tr>
-                        <tr className="bg-white dark:bg-gray-800">
-                        <th scope="row" className="px-4 py-2 flex gap-2 items-center font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr className="bg-white text-black">
+                        <th scope="row" className="px-4 py-2 flex gap-2 items-center font-medium text-gray-900 whitespace-nowrap">
                              <input 
                                  type="checkbox" 
                                  checked={checkedFour}
                                  onChange={(e) => setCheckedFour(e.target.checked)}
-                                 className='w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2dark:border-gray-600' /> {subjectFour}
+                                 className='w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded ' /> {subjectFour}
                            </th>
                            <td className="px-4 py-2">
                               <input 
