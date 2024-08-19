@@ -357,7 +357,7 @@ const ExamsActive = () => {
         {loading && <Spinner />}
         <div className="flex items-center p-1 py-3 justify-between border border-gray-200">
           <div className="cta-dash-body w-full flex justify-between items-center">
-            <div className="subject-select-container text-xs full-flex gap-2">
+            <div className="subject-select-container text-xs md:text-base w-full flex gap-0.5 md:gap-2">
               {subjectCollection.length === 0 ? (
                 <>Loading...</>
               ) : (
@@ -381,7 +381,7 @@ const ExamsActive = () => {
         </div>
       </div>
 
-      <section className="h-screen w-11/12 gap-1 md:w-11/12 p-0 m-auto mt-1 md:p-5 m-auto flex flex-col-reverse md:flex md:flex-row items-start">
+      <section className="w-11/12 gap-1 md:w-11/12 p-0 m-auto mt-1 md:p-5 m-auto flex flex-col-reverse md:flex md:flex-row items-start">
         <div className="border m-auto w-full p-1">
           <div className="question-container ">
             <div id='questions-body' className="questions-body w-full pr-2">
@@ -390,10 +390,10 @@ const ExamsActive = () => {
               ) : (
                   <div key={singleQuestion && singleQuestion.question_id} className="questions-single bg-gray-50 rounded p-2 mt-1">
                     <div className="question-header">
-                      <p className='font-bold text-gra-950'>
+                      <p className='font-bold text-gray-950 text-lg p-1'>
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension_title ? singleQuestion.comprehension_title : ''}
                       </p>
-                      <p className='text-base text-black'>
+                      <p className='text-base text-black border-b max-h-[200px] p-1 shadow overflow-y-auto' >
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension ? singleQuestion.comprehension : ''}
                       </p>
                       <p className="text-gray-500 text-base">
@@ -442,16 +442,15 @@ const ExamsActive = () => {
         </div>
 
         {/* Questions Index */}
-        <div className="questions-index-container">
-          <div className="question-index-body text-sm w-72 grid grid-cols-10 md:w-40 md:grid-cols-4 gap-0.5 text-gray-100 p-1 rouded">
+        <div className="questions-index-container w-full md:w-40">
+          <div className="question-index-body text-sm w-full grid grid-cols-12 md:w-40 md:grid-cols-4 gap-0.5 text-gray-100 p-1 rouded max-h-[50px] overflow-y-scroll md:max-h-[400px]">
             {activeSubjectQuestions.map((item, index) => (
-             
               <span
                 onClick={() => selectSingleIndex(index)}
                 index_value={index + 1}
                 key={index}
                 href={`#num${index + 1}`}
-                className={`cursor-pointer border rounded ${getBgColor(index, item.question_id)} flex items-center justify-center question-index-number`}
+                className={`cursor-pointer border rounded ${getBgColor(index, item.question_id)} flex items-center justify-center question-index-number w-full gap-1 h-6`}
               >
                 {index + 1}
               </span>
