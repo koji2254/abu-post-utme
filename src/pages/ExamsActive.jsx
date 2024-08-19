@@ -132,7 +132,8 @@ const ExamsActive = () => {
   // then navigate to the history page
   useEffect(() => {
     if(submitted === true){
-      navigate('/performace-history')
+      // navigate('/performace-history')
+      window.location.href = '/performace-history'
     }
   }, [submitted])
 
@@ -178,11 +179,6 @@ const ExamsActive = () => {
       user_id: examDetails.user_id,
       subject: activeSubject
     }
-    // setUserAnswersList((prevSate) => [
-    //   ...prevSate,
-    //   answerObj
-    // ])
-    // updateAnswersCheck([answerObj])
     makeAnswerPost(answerObj);
 
     //  e.target.checked = true;
@@ -271,7 +267,6 @@ const ExamsActive = () => {
     setSingleIndex(singleIndex+1)
   }
 
-
   const submitExam = () => {  
       const confirmSubmit = window.confirm('Are you sure you want to submit')
 
@@ -296,7 +291,8 @@ const ExamsActive = () => {
         const now = new Date();
         const timeLeft = endTime - now;
 
-        if (timeLeft > 0) {
+        if (examDetails.allocated_time && timeLeft > 0) {
+        // if (examDetails.allocated_time && timeLeft > 0) {
           const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
           const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
           const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
@@ -360,9 +356,9 @@ const ExamsActive = () => {
 
       {/* <BlockMath math={blockFormula} /> */}
         {loading && <Spinner />}
-        <div className="flex items-center p-1 py-3 justify-between border border-gray-200">
+        <div className="flex items-center p-1 py-3 justify-between shadow">
           <div className="cta-dash-body w-full flex justify-between items-center">
-            <div className="subject-select-container text-xs md:text-base w-full flex gap-0.5 md:gap-2">
+            <div className="subject-select-container flex items-center text-xs md:text-base w-72 overfloy-x-scroll md:w-full gap-0.5 md:gap-2">
               {subjectCollection.length === 0 ? (
                 <>Loading...</>
               ) : (
@@ -376,9 +372,9 @@ const ExamsActive = () => {
 
             <div className="full-flex gap-2">
               <div id="timing-box" className="font-semibold">
-                <div id="count-down" className="countdown font-mono text-sm md:text-lg flex">{countDown}</div>   
+                <div id="count-down" className="countdown font-mono text-black text-base md:text-lg flex">{countDown}</div>   
               </div>
-              <button onClick={submitExam} className="bg-gray-100 hover:bg-red-500 hover:text-white text-red-600 border border-red-400 p-2 px-3 rounded font-semibold text-sm">
+              <button onClick={submitExam} className="bg-gray-100 hover:bg-red-500 hover:text-white text-red-600 border border-red-400 p-1   md:p-2 md:px-3 rounded text-sm">
                 Submit
               </button>
             </div>
@@ -422,7 +418,7 @@ const ExamsActive = () => {
                                 // value={option}
                                 value={option}
                                 onClick={(e) => optionPick(e, singleQuestion && singleQuestion.question_id, option)}
-                                className="w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500"
+                                className="w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 bg-white"
                               />
                             </span>
                             <p>{renderMath(option)}</p>

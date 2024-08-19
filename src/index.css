@@ -9,8 +9,6 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #e9f9ef;
-  height: 100%;
 }
 
 .h-full {
@@ -204,9 +202,13 @@ body {
   align-items: center;
  }
 
+ .subject-select-container {
+   overflow-x:scroll ;
+ }
+
+ 
 
  @media(max-width:700px) {
-      
     .tiny-font {
       font-size: 10px;
     }

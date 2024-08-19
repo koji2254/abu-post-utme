@@ -19,7 +19,7 @@ export const ExamProvider = ({children}) => {
    const [userAnswersList,setUserAnswersList] = useState([])
    const [subjectCollection, setSubjectCollection] = useState([])
 
-   const [examGreenFlag, setExamGreenFlag] = useState(false)
+   const [examGreenFlag, setExamGreenFlag] = useState()
    const [submitted, setSubmitted] = useState(false)
 
    const [correctionQuestions,setCorrectionQuestions] = useState([])
@@ -43,6 +43,19 @@ export const ExamProvider = ({children}) => {
        })
   }
 
+  const confirmIfActiveExams = (user_id) => {
+    axios.get(`${API_URL_BASE}/api/confirm-active/${user_id}`)
+    .then((response) => {
+        if(response.data.status === true){
+          setExamGreenFlag(true)
+        }else {
+          setExamGreenFlag(false)
+        }
+      })
+    .catch((error) => {
+      console.log(error.response.data.message)
+    })
+  }
 
   const getActiveExam = (user_id) => {  
    setLoading(true)
@@ -65,7 +78,6 @@ export const ExamProvider = ({children}) => {
       })
       setSubjectCollection(subjectCol)
       // console.log(subjectCol)
-
       getSelectedAnswers(user_id)
 
      })
@@ -154,11 +166,8 @@ export const ExamProvider = ({children}) => {
       headers: { 'Authorization': `Bearer ${token}`}
     }).then((response) => {
       if(response.data.status === true){
-
         setSubmitted(true)
-        setTimeout(() => {
-          setSubmitted(false)
-        },2000)
+        setExamGreenFlag(false)
       }
     }).catch((error) => {
       console.log(error)
@@ -205,6 +214,22 @@ export const ExamProvider = ({children}) => {
   // ******************************
   // ******************************
 
+  const deleteExams = (examId) => {
+    setLoading(true)
+    axios.post(`${API_URL_BASE}/api/delete-exams/${examId}`, {
+      headers: { 'Authorization': `Bearer ${token}`}
+    }).then((response) => {
+      setExamsHistory(response.data.exams_history);  
+      setMessage(response.data.message)
+
+    }).catch((error) => {
+      console.log(error)
+      alert(error.data.message)
+    }).finally(() => {
+      setLoading(false)
+    })
+  }
+
 
 
    return (
@@ -217,7 +242,11 @@ export const ExamProvider = ({children}) => {
          subjectCollection,
          examDetails,
          examGreenFlag,
+         setExamGreenFlag,
          submitted,
+         setSubmitted,
+         setCorrectionAnswers,
+         setCorrectionQuestions,
          correctionAnswers,
          correctionQuestions,
          setUserAnswersList,
@@ -228,6 +257,9 @@ export const ExamProvider = ({children}) => {
          createNewExamSession,
          confirmSubmitExam,
          getCorrection,
+         deleteExams,
+         setMessage,
+         confirmIfActiveExams,
 
       }}>
          {children}

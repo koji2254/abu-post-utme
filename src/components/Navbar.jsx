@@ -25,18 +25,11 @@ const Navbar = () => {
       setActiveExams(true)
     }
 
+    if(pageUrl !== '/active-exam'){
+      setActiveExams(false)
+    }
+
   }, [pageUrl, setPageUrl])
-
-
-  // useEffect(() => {
-  //   if(pageUrl === '/active-exam'){
-  //     setIsActiveExamPage(true)
-  //     console.log(true)
-  //   }else if(pageUrl !== '/active-exam'){
-  //     setIsActiveExamPage(false)
-  //   }
-
-  // }, [pageUrl])    
 
 
   return (
@@ -49,7 +42,7 @@ const Navbar = () => {
               <span className="hidden sm:flex text-lg space-grotesk tx-pr-green font-semibold">Ahmadu Bello University</span>
             </NavLink>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-0.5 md:gap-2">
             { user === null ? (
               <>
                 <NavLink to='/signin'>
@@ -62,6 +55,7 @@ const Navbar = () => {
                     Sign-Up
                   </span>
                 </NavLink>
+              
               </>
             ) : (
               <>
@@ -77,6 +71,11 @@ const Navbar = () => {
                       profile
                     </span>
                   </NavLink>
+                  <NavLink to='/about'>
+                  <span className="text-gray-100 font-mono text-xs p-2">
+                    Contact
+                  </span>
+                 </NavLink>
                   <span onClick={logOut} className="text-red-500 font-mono text-xs p-2 cursor-pointer">
                     Logout 
                   </span>

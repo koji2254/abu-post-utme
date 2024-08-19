@@ -15,7 +15,7 @@ const ExamStep = () => {
    const navigate = useNavigate()
    const { user, getUser, getUserProfile, profileData, loading, setLoading, loginStatus, setPageUrl, pageUrl } = useContext(UserContext)
    const { getSubjectCombination, subjectSet } = useContext(SubjectCombinationContext)
-   const { createNewExamSession, examGreenFlag } = useContext(ExamContext)
+   const { createNewExamSession, setExamGreenFlag, examGreenFlag, confirmIfActiveExams } = useContext(ExamContext)
 
    const [subjectOne, setSubjectOne] = useState('ENGLISH LANGUAGE')
    const [subjectTwo, setSubjectTwo] = useState('')
@@ -53,12 +53,18 @@ const ExamStep = () => {
          if(subjectSet === null){
             getSubjectCombination(user.user_id)
             getUserProfile(user.user_id)
+           
          }
       }
 
       if(user === null){
          getUser()
       }
+
+      if(examGreenFlag === true){
+         navigate('/active-exam')
+      }
+
     },[])
 
    // - - - - - - - - - - - - - - - - - - - 
@@ -69,10 +75,15 @@ const ExamStep = () => {
             getUserProfile(user.user_id)
          }
       }
-      // if(user === null){
-      //    navigate('/signin')
-      // }
+       confirmIfActiveExams(user && user.user_id)
     },[user])
+
+      
+  useEffect(() => {
+   if(examGreenFlag === true){
+     navigate('/active-exam')
+   }
+ }, [examGreenFlag])
 
     
    useEffect(() => {
@@ -94,6 +105,7 @@ const ExamStep = () => {
     }, [subjectSet])
 
    //  @Navigate to the Exams page
+
    useEffect(() => {
       if(examGreenFlag === true){
          navigate('/active-exam')
@@ -240,13 +252,13 @@ const ExamStep = () => {
 
   return (
     <>
-      <div className="overal-section w-full">
+      <div className="h-screen overal-section w-full">
          {loading && <Spinner />}
          <div className="mx-1 bg-white rounded p-2 md:w-8/12">
             <h2 className='my-1 font-mono font-bold text-lg text-black'>Exams Type</h2>
             <div className="flex font-nunito items-center w-full gap-2 justify-between">
                <Card head={'Standard'} body="Answer Question according to the standards of JAMB" />
-               <Card head={'Custom'} body="Answer Question by chossing specifics" />
+               <Card head={'Custom'} body="Answer Question by chossing specific Subjects" />
             </div>
             <div className='mt-2 shadow space-grotesk py-3'>
                <label className='p-2 font-bold text-gray-900' htmlFor="">Select Exam Type</label>
@@ -275,7 +287,7 @@ const ExamStep = () => {
                         </tr>
                   </thead>
                   <tbody>
-                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr className="bg-white border-b text-black">
                            <th scope="row" className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                              {subjectOne}
                            </th>
@@ -284,7 +296,7 @@ const ExamStep = () => {
                            </td>
                                                 
                         </tr>
-                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr className="bg-white border-b text-black">
                            <th scope="row" className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                               {subjectTwo}
                            </th>
@@ -328,7 +340,7 @@ const ExamStep = () => {
                         </tr>
                   </thead>
                   <tbody>
-                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr className="bg-white border-b text-black">
                            <th scope="row" className="px-4 py-2 flex gap-2 items-center font-medium text-gray-900 whitespace-nowrap dark:text-white pt-3">
                              <input 
                                  type="checkbox" 
@@ -354,7 +366,7 @@ const ExamStep = () => {
                                  placeholder='INPUT TOTAL TIME' className='bg-gray-100  text-gray-800 font-bold p-3 rounded w-full border' />
                            </td>        
                         </tr>
-                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr className="bg-white border-b text-black">
                            <th scope="row" className="px-4 py-2 flex gap-2 items-center font-medium text-gray-900 whitespace-nowrap dark:text-white pt-3">
                              <input 
                                  type="checkbox" 

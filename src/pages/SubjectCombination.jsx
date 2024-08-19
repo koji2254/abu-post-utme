@@ -9,10 +9,16 @@ import Spinner from '../components/Spinner';
 import GreenBtn from '../components/GreenBtn';
 import { UserContext } from '../context/user/UserContext';
 import { SubjectCombinationContext } from '../context/subjectCombination/SubjectCombinationContext';
+import ErrAlert from '../components/ErrAlert';
+import SuccAlert from '../components/SuccAlert';
+
 
 const SubjectCombination = () => {
   const { getSubjectCombination, getSubjectList, subjectList, subjectSet, updateSubjectCombination, message, loading, setMessage} = useContext(SubjectCombinationContext);
   const { getUser, user, loginStatus, pageUrl, setPageUrl } = useContext(UserContext);
+  
+  const [error, setError] = useState(null)
+  const [succ, setSucc] = useState(null)
 
   const token = localStorage.getItem('auth_cbt_token');
   const navigate = useNavigate();
@@ -51,8 +57,7 @@ const SubjectCombination = () => {
     }
 
     if(message){
-      alert(message)
-      setMessage(null)
+      setSucc(message)
     }
 
   }, [subjectSet, message]);
@@ -85,8 +90,29 @@ const SubjectCombination = () => {
     setSubjectFour(e.target.value);
   };
 
+  
+  useEffect(() => {
+    if(error !== null){
+      setTimeout(() => {
+        setError(null)
+        setMessage(null)
+      }, 2000)
+    }
+
+    if(succ !== null){
+      setTimeout(() => {
+        setSucc(null)
+        setMessage(null)
+      }, 2000)
+    }
+
+    
+  }, [error, succ])
+
   return (
     <div className='h-screen'>
+      {error && <ErrAlert text={error} />}
+      {succ && <SuccAlert text={succ} />}
       {loading && <Spinner />}
       <div className="mx-1 shadow rounded space-grotesk bg-green-50 p-2">
         <h1 className='text-lg font-semibold'>Select your subject combination:</h1>

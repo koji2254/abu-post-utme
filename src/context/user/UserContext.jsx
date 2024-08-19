@@ -85,6 +85,7 @@ export const UserProvider = ({ children }) => {
           setMessage(error.response.data.message)
           setLoginStatus(false)
           setUser(null)
+          alert(error.response.data.message);
           console.error(error.response.data.message);
         }).finally(() => {
           setLoading(false)
@@ -104,7 +105,7 @@ export const UserProvider = ({ children }) => {
         })
         .catch(error => {
           console.error(error);
-          alert('Registration failed');
+          alert(error.response.data.message);
           setUser(null)
           setLoginStatus(false)
         }).finally(() => {
