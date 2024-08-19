@@ -283,6 +283,7 @@ const ExamsActive = () => {
 
   useEffect(() => {
     if (examDetails && singleQuestion) {
+      console.log(examDetails)
       const timeSet = examDetails.allocated_time; // in minutes
       // const startedTime = new Date(examDetails.created_at); // starting time
       const startedTime = new Date(Date.parse(examDetails.created_at)); // starting time

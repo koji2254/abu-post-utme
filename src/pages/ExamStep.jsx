@@ -243,7 +243,7 @@ const ExamStep = () => {
       <div className="overal-section w-full">
          {loading && <Spinner />}
          <div className="mx-1 bg-white rounded p-2 md:w-8/12">
-            <h2 className='my-1 font-mono font-bold text-lg'>Exams Type</h2>
+            <h2 className='my-1 font-mono font-bold text-lg text-black'>Exams Type</h2>
             <div className="flex font-nunito items-center w-full gap-2 justify-between">
                <Card head={'Standard'} body="Answer Question according to the standards of JAMB" />
                <Card head={'Custom'} body="Answer Question by chossing specifics" />
@@ -256,7 +256,7 @@ const ExamStep = () => {
                </select>
             </div>
          </div>
-         <div className="md:w-8/12 bg-white mx-1 mt-2 rounded">
+         <div className="md:w-8/12 bg-white text-black mx-1 mt-2 rounded">
             <h1 className="font-bold font-mono text-xl py-2 mx-4">Subjects Combinations</h1>
             {examType === 'standard' ? (
                <div className="relative overflow-x-auto">

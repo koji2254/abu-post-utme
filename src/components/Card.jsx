@@ -2,7 +2,7 @@
 
 const Card = ({ head, body}) => {
   return (
-   <div className="border p-2 h-24 w-full space-grotesk">
+   <div className="border p-2 h-24 w-full space-grotesk text-black">
       <h2 className='font-bold text-xl'>{head}</h2>
       <p className='text-xs'>{body}</p>
    </div>
