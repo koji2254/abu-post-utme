@@ -363,7 +363,7 @@ const ExamsActive = () => {
                 <>Loading...</>
               ) : (
                 subjectCollection.map((item, index) => (
-                  <div onClick={() => selectSubject(item)} key={index} value={item} className={`flex hover:bg-gray-200  ${activeSubject === item ? 'bg-gray-800 text-gray-50 hover:text-gray-800 hover:bg-gray-900 hover:text-gray-50' : 'bg-gray-50 text-gray-800'} cursor-pointer rounded-lg items-center`}>
+                  <div onClick={() => selectSubject(item)} key={index} value={item} className={`flex hover:bg-gray-200  ${activeSubject === item ? 'bg-gray-800 text-gray-50 hover:text-gray-800 hover:bg-gray-90 hover:text-gray-50' : 'bg-gray-50 text-gray-800'} cursor-pointer rounded-lg items-center`}>
                     <span className="p-1 md:p-2 uppercase text-sm font-semibold">{item === 'ENGLISH LANGUAGE' ? 'ENG LANG' : item}</span>
                   </div>
                 ))

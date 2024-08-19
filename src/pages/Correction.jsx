@@ -41,6 +41,7 @@ const Correction = () => {
       getCorrection(exams_id)
     }
     
+    setActiveSubjectQuestions([])
   }, [])
 
 
@@ -256,7 +257,7 @@ const Correction = () => {
                 <>Loading...</>
               ) : (
                 subjectCollection.map((item, index) => (
-                  <div onClick={() => selectSubject(item)} key={index} value={item} className={`flex hover:bg-gray-200  ${activeSubject === item ? 'bg-gray-800 text-gray-50 hover:text-gray-800 hover:bg-gray-900 hover:text-gray-50' : 'bg-gray-50 text-gray-800'} cursor-pointer rounded-lg items-center`}>
+                  <div onClick={() => selectSubject(item)} key={index} value={item} className={`flex hover:bg-gray-200  ${activeSubject === item ? 'bg-gray-800 text-gray-50 hover:text-gray-800 hover:bg-gray-90 hover:text-gray-50' : 'bg-gray-50 text-gray-800'} cursor-pointer rounded-lg items-center`}>
                     <span className="p-1 md:p-2 uppercase text-sm font-semibold">{item === 'ENGLISH LANGUAGE' ? 'ENG LANG' : item}</span>
                   </div>
                 ))
@@ -278,16 +279,17 @@ const Correction = () => {
       <section className="w-11/12 gap-1 md:w-11/12 p-0 m-auto mt-1 md:p-5 m-auto flex flex-col-reverse md:flex md:flex-row items-start">
         <div className="border m-auto w-full p-1">
           <div className="question-container ">
-            <div id='questions-body' className="questions-body w-full pr-2">
+            
             {singleQuestion === null ? (
                 'Loading ...'
               ) : (
+              <div id='questions-body' className="questions-body w-full pr-2">
                   <div key={singleQuestion && singleQuestion.question_id} className="questions-single bg-gray-50 rounded p-2 mt-1">
                     <div className="question-header">
                       <p className="text-gray-500">                     
                         Question <span>{singleIndex + 1}</span>                      
                       </p>
-                      <p className="text-gray-900 font-semibold">
+                      <p className="text-gray-900 font-semibold text-base">
                         {/* {singleQuestion && singleQuestion.question_value} */}
                         {singleQuestion && (activeSubject === 'MATHEMATICS' ? renderMath(singleQuestion.question_value) : singleQuestion.question_value)}
                        
@@ -297,7 +299,7 @@ const Correction = () => {
                     <div className="options-body mt-3">
                       <ul question_id={singleQuestion && singleQuestion.question_id} >
                         {singleQuestion && singleQuestion.options.map((option, optionIndex) => (
-                          <li key={optionIndex} question_id={singleQuestion && singleQuestion.question_id} className="w-full bg-gray flex items-center p-1 mt-1 hover:bg-green-100">
+                          <li key={optionIndex} question_id={singleQuestion && singleQuestion.question_id} className="w-full bg-gray flex items-center p-1 mt-1 text-sm hover:bg-green-100">
                             <span className="pr-1 flex items-center">
                               <input
                                 question_id={singleQuestion && singleQuestion.question_id}
@@ -305,11 +307,11 @@ const Correction = () => {
                                 type="checkbox"
                                 disabled
                                 // value={option}
-                                value={option}
+                                value={renderMath(option)}
                                 className="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                               />
                             </span>
-                            <p>{activeSubject === 'MATHEMATICS' ? renderMath(option) : option}</p>
+                            <p>{renderMath(option)}</p>
                             <p></p>
                           </li>
                         ))}
@@ -318,7 +320,7 @@ const Correction = () => {
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 text-green-500">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                           </svg>
-                        {singleQuestion && singleQuestion.answer_value}</p>
+                        {singleQuestion && renderMath(singleQuestion.answer_value)}</p>
                       <div className="flex w-full items-center text-center justify-around mt-2 bg-gray-50 p-3 gap-3">
                        
                        { singleIndex === 0 ? '' : (
@@ -330,8 +332,8 @@ const Correction = () => {
                       </div>  
                     </div>
                   </div>
+                </div>
               )}
-            </div>
           </div>
         </div>
 
