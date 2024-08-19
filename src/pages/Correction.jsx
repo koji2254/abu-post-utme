@@ -6,11 +6,8 @@ import { ExamContext } from "../context/Exams/ExamContext";
 import { useContext, useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 
-
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
-
-
 
 const Correction = () => {
   const navigate = useNavigate()
@@ -43,8 +40,6 @@ const Correction = () => {
     if(exams_id){
       getCorrection(exams_id)
     }
-    
-
     
   }, [])
 
@@ -245,29 +240,35 @@ const Correction = () => {
     <>
       {loading && <Spinner />}
       <div className="overal body w-full">
-        <p className="font-bold block pl-2">Exams Correction</p>
-       <div className="flex items-center p-1 py-3 justify-between border border-gray-200">
-          
+      <div className="flex justify-between items-center px-3 py-1">
+        <p className="font-bold block">Exams Correction</p>
+        <NavLink to='/performace-history'>
+          <button className="bg-red-50 hover:bg-red-100 hover:text-red-600 text-red-500 p-2 px-3 rounded font-semibold text-sm space-grotesk">
+            Exit
+          </button>
+        </NavLink>
+      </div>
+       
+       <div className="flex items-center px-2 py-1 justify-between">          
           <div className="cta-dash-body w-full flex justify-between items-center">
-            <div className="subject-select-container text-xs full-flex gap-2">
+          <div className="subject-select-container flex items-center text-base md:text-base overfloy-x-scroll gap-2 md:gap-2">
               {subjectCollection.length === 0 ? (
                 <>Loading...</>
               ) : (
-                subjectCollection && subjectCollection.map((item, index) => (
-                  <div onClick={() => selectSubject(item)} key={index} value={item} className={`flex hover:bg-gray-200 border ${activeSubject === item ? 'bg-gray-800 text-gray-50 hover:bg-gray-900 hover:text-gray-50' : 'bg-gray-50 text-gray-800'} cursor-pointer rounded-full items-center`}>
-                    <span className="p-1 md:p-2 uppercase text-xs tiny-font">{item}</span>
+                subjectCollection.map((item, index) => (
+                  <div onClick={() => selectSubject(item)} key={index} value={item} className={`flex hover:bg-gray-200  ${activeSubject === item ? 'bg-gray-800 text-gray-50 hover:text-gray-800 hover:bg-gray-900 hover:text-gray-50' : 'bg-gray-50 text-gray-800'} cursor-pointer rounded-lg items-center`}>
+                    <span className="p-1 md:p-2 uppercase text-sm font-semibold">{item === 'ENGLISH LANGUAGE' ? 'ENG LANG' : item}</span>
                   </div>
                 ))
               )}
             </div>
-
-            <div className="full-flex gap-2">
+            {/* <div className="full-flex gap-2">
               <NavLink to='/performace-history'>
                 <button className="bg-gray-800 hover:bg-gray-900 hover:text-red-600 text-red-400 border border-gray-950 p-2 px-3 rounded font-semibold font-mono text-sm">
                   Exit
                 </button>
               </NavLink>
-            </div>
+            </div> */}
           </div>
         </div>
       </div> 
@@ -321,9 +322,9 @@ const Correction = () => {
                       <div className="flex w-full items-center text-center justify-around mt-2 bg-gray-50 p-3 gap-3">
                        
                        { singleIndex === 0 ? '' : (
-                        <button onClick={showPreviousQuestion} id='previous-questions' index={singleIndex} question_id={ singleQuestion && singleQuestion.question_id} className='bg-gray-900 text-white hover:bg-gray-800 p-2 px-3 rounded-full font-sans text-xs font-semibold'>Previous</button>)}
+                        <button onClick={showPreviousQuestion} id='previous-questions' index={singleIndex} question_id={ singleQuestion && singleQuestion.question_id} className='bg-gray-900 text-white hover:bg-gray-800 p-2 px-3 rounded-full font-sans text-sm font-semibold'>Previous</button>)}
                        {activeSubjectQuestions.length === singleIndex+1 ? '' : (
-                        <button onClick={showNextQuestion} id='next-questions' index={singleIndex} question_id={ singleQuestion && singleQuestion.question_id} className='bg-gray-900 text-white hover:bg-gray-800 p-2 px-3 rounded-full font-sans text-xs font-semibold'>Next</button>
+                        <button onClick={showNextQuestion} id='next-questions' index={singleIndex} question_id={ singleQuestion && singleQuestion.question_id} className='bg-gray-900 text-white hover:bg-gray-800 p-2 px-3 rounded-full font-sans text-sm font-semibold'>Next</button>
                        )}
                         
                       </div>  
@@ -335,15 +336,15 @@ const Correction = () => {
         </div>
 
         {/* Questions Index */}
-        <div className="questions-index-container">
-          <div className="question-index-body text-sm w-72 grid grid-cols-10 md:w-40 md:grid-cols-4 gap-0.5 text-gray-100 p-1 rouded">
-            {activeSubjectQuestions && activeSubjectQuestions.map((item, index) => (
+        <div className="questions-index-container w-full md:w-40">
+          <div className="question-index-body text-sm w-full grid grid-cols-10 md:w-40 md:grid-cols-4 gap-0.5 text-gray-100 p-1 rouded max-h-[100px] overflow-y-scroll md:max-h-[400px]">
+            {activeSubjectQuestions.map((item, index) => (
               <span
                 onClick={() => selectSingleIndex(index)}
                 index_value={index + 1}
                 key={index}
                 href={`#num${index + 1}`}
-                className={`cursor-pointer border rounded ${getBgColor(index, item.question_id)} flex items-center justify-center question-index-number`}
+                className={`cursor-pointer border border-gray-50 rounded ${getBgColor(index, item.question_id)} flex items-center justify-center question-index-number w-full gap-1 h-8`}
               >
                 {index + 1}
               </span>

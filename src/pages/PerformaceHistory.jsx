@@ -39,8 +39,10 @@ const PerformanceHistory = () => {
   
   useEffect(() => {
     if (user) {
-      fetchExamsHistory(user && user.user_id);
-
+      if(examsHistory.length < 1){
+        fetchExamsHistory(user && user.user_id);
+      }
+      
       confirmIfActiveExams(user && user.user_id)
     }
   }, [user]); 

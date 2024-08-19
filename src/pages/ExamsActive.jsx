@@ -358,13 +358,13 @@ const ExamsActive = () => {
         {loading && <Spinner />}
         <div className="flex items-center p-1 p-3 justify-between shadow">
           <div className="cta-dash-body w-full flex flex-col-reverse gap-2 md:justify-between md:flex-row px-3">
-            <div className="subject-select-container flex items-center text-base md:text-base overfloy-x-scroll gap-1 md:gap-2">
+            <div className="subject-select-container flex items-center text-base md:text-base overfloy-x-scroll gap-2 md:gap-2">
               {subjectCollection.length === 0 ? (
                 <>Loading...</>
               ) : (
                 subjectCollection.map((item, index) => (
-                  <div onClick={() => selectSubject(item)} key={index} value={item} className={`flex hover:bg-gray-200  ${activeSubject === item ? 'bg-gray-800 text-gray-50 hover:bg-gray-900 hover:text-gray-50' : 'bg-gray-50 text-gray-800'} cursor-pointer rounded-lg items-center`}>
-                    <span className="p-1 md:p-2 uppercase text-xs font-semibold">{item === 'ENGLISH LANGUAGE' ? 'ENG LANG' : item}</span>
+                  <div onClick={() => selectSubject(item)} key={index} value={item} className={`flex hover:bg-gray-200  ${activeSubject === item ? 'bg-gray-800 text-gray-50 hover:text-gray-800 hover:bg-gray-900 hover:text-gray-50' : 'bg-gray-50 text-gray-800'} cursor-pointer rounded-lg items-center`}>
+                    <span className="p-1 md:p-2 uppercase text-sm font-semibold">{item === 'ENGLISH LANGUAGE' ? 'ENG LANG' : item}</span>
                   </div>
                 ))
               )}
@@ -400,9 +400,9 @@ const ExamsActive = () => {
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension_title ? singleQuestion.comprehension_title : ''}
                       </p>                      
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension ?
-                        (<p className='text-sm text-black border-b max-h-[200px] p-1 shadow overflow-y-auto' >{singleQuestion.comprehension}</p>) : ''}
+                        (<p className='text-sm text-black border-b max-h-[200px] p-1 shadow overflow-y-auto mb-2' >{singleQuestion.comprehension}</p>) : ''}
                   
-                      <p className="text-gray-500 text-base">
+                      <p className="text-gray-500 text-base mb-1">
                         Question <span>{singleIndex + 1}</span>
                       </p>
                       <p className="text-gray-900 font-semibold text-base">
@@ -434,9 +434,9 @@ const ExamsActive = () => {
                       <div className="flex w-full items-center text-center justify-around mt-2 bg-gray-50 p-3 gap-3">
                        
                        { singleIndex === 0 ? '' : (
-                        <button onClick={showPreviousQuestion} id='previous-questions' index={singleIndex} question_id={ singleQuestion && singleQuestion.question_id} class='bg-gray-900 text-white hover:bg-gray-800 p-2 px-3 rounded-full font-sans text-xs font-semibold'>Previous</button>)}
+                        <button onClick={showPreviousQuestion} id='previous-questions' index={singleIndex} question_id={ singleQuestion && singleQuestion.question_id} class='bg-gray-900 text-white hover:bg-gray-800 p-2 px-3 rounded-full font-sans text-sm font-semibold'>Previous</button>)}
                        {activeSubjectQuestions.length === singleIndex+1 ? '' : (
-                        <button onClick={showNextQuestion} id='next-questions' index={singleIndex} question_id={ singleQuestion && singleQuestion.question_id} class='bg-gray-900 text-white hover:bg-gray-800 p-2 px-3 rounded-full font-sans text-xs font-semibold'>Next</button>
+                        <button onClick={showNextQuestion} id='next-questions' index={singleIndex} question_id={ singleQuestion && singleQuestion.question_id} class='bg-gray-900 text-white hover:bg-gray-800 p-2 px-3 rounded-full font-sans text-sm font-semibold'>Next</button>
                        )}
                         
                       </div>  
@@ -449,14 +449,14 @@ const ExamsActive = () => {
 
         {/* Questions Index */}
         <div className="questions-index-container w-full md:w-40">
-          <div className="question-index-body text-sm w-full grid grid-cols-12 md:w-40 md:grid-cols-4 gap-0.5 text-gray-100 p-1 rouded max-h-[50px] overflow-y-scroll md:max-h-[400px]">
+          <div className="question-index-body text-sm w-full grid grid-cols-10 md:w-40 md:grid-cols-4 gap-0.5 text-gray-100 p-1 rouded max-h-[100px] overflow-y-scroll md:max-h-[400px]">
             {activeSubjectQuestions.map((item, index) => (
               <span
                 onClick={() => selectSingleIndex(index)}
                 index_value={index + 1}
                 key={index}
                 href={`#num${index + 1}`}
-                className={`cursor-pointer border border-gray-50 rounded ${getBgColor(index, item.question_id)} flex items-center justify-center question-index-number w-full gap-1 h-6`}
+                className={`cursor-pointer border border-gray-50 rounded ${getBgColor(index, item.question_id)} flex items-center justify-center question-index-number w-full gap-1 h-8`}
               >
                 {index + 1}
               </span>
