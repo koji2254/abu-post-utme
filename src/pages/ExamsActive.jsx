@@ -252,7 +252,7 @@ const ExamsActive = () => {
   // @SETS THE BG GREEN FOR ANSWERED QUESTIONS - - -  - - - - - -
   const getBgColor = (index, question_id) => {
     const userAnswer = userAnswersList.find(answer => +answer.question_id === question_id);
-    return userAnswer && userAnswer.selected_answer !== '' ? 'bg-gradient-to-r from-green-700 to-green-500' : 'bg-gray-100 text-gray-800 hover:bg-gray-200';
+    return userAnswer && userAnswer.selected_answer !== '' ? 'bg-gradient-to-r from-green-700 to-green-500' : 'bg-gray-50 text-gray-800 hover:bg-gray-100';
   }
 
   // @SHOW THE NEXT AND PREVIOUS BUTTON {}
@@ -357,22 +357,27 @@ const ExamsActive = () => {
       {/* <BlockMath math={blockFormula} /> */}
         {loading && <Spinner />}
         <div className="flex items-center p-1 p-3 justify-between shadow">
-          <div className="cta-dash-body w-full flex justify-between items-center">
-            <div className="subject-select-container flex items-center text-xs md:text-base overfloy-x-scroll gap-0.5 md:gap-2">
+          <div className="cta-dash-body w-full flex flex-col-reverse gap-2 md:justify-between md:flex-row px-3">
+            <div className="subject-select-container flex items-center text-base md:text-base overfloy-x-scroll gap-1 md:gap-2">
               {subjectCollection.length === 0 ? (
                 <>Loading...</>
               ) : (
                 subjectCollection.map((item, index) => (
-                  <div onClick={() => selectSubject(item)} key={index} value={item} className={`flex hover:bg-gray-200 border ${activeSubject === item ? 'bg-gray-800 text-gray-50 hover:bg-gray-900 hover:text-gray-50' : 'bg-gray-50 text-gray-800'} cursor-pointer rounded-full items-center`}>
-                    <span className="p-1 md:p-2 uppercase text-xs tiny-font">{item}</span>
+                  <div onClick={() => selectSubject(item)} key={index} value={item} className={`flex hover:bg-gray-200  ${activeSubject === item ? 'bg-gray-800 text-gray-50 hover:bg-gray-900 hover:text-gray-50' : 'bg-gray-50 text-gray-800'} cursor-pointer rounded-lg items-center`}>
+                    <span className="p-1 md:p-2 uppercase text-xs font-semibold">{item === 'ENGLISH LANGUAGE' ? 'ENG LANG' : item}</span>
                   </div>
                 ))
               )}
             </div>
 
-            <div className="flex flex-col justify-center text-center gap-2 items-center md:flex-row">
+            <div className="flex justify-between gap-2 items-center flex-row">
               <div id="timing-box" className="font-semibold">
-                <div id="count-down" className="countdown font-mono text-black text-base md:text-lg flex">{countDown}</div>   
+                <div id="count-down" className="countdown font-mono text-black text-base md:text-lg flex items-center gap-1">
+                  <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  </span>
+                  {countDown}</div>   
               </div>
               <button onClick={submitExam} className="bg-gray-100 hover:bg-red-500 hover:text-white text-red-600 border border-red-400 p-1 md:p-2 md:px-3 rounded text-sm">
                 Submit
@@ -383,7 +388,7 @@ const ExamsActive = () => {
       </div>
 
       <section className="w-11/12 gap-1 md:w-11/12 p-0 m-auto mt-1 md:p-5 m-auto flex flex-col-reverse md:flex md:flex-row items-start">
-        <div className="border m-auto w-full p-1">
+        <div className="m-auto w-full p-1">
           <div className="question-container ">
             <div id='questions-body' className="questions-body w-full pr-2">
             {singleQuestion === null ? (
@@ -393,14 +398,14 @@ const ExamsActive = () => {
                     <div className="question-header">
                       <p className='font-bold text-gray-950 text-lg p-1'>
                         {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension_title ? singleQuestion.comprehension_title : ''}
-                      </p>
-                      <p className='text-base text-black border-b max-h-[200px] p-1 shadow overflow-y-auto' >
-                        {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension ? singleQuestion.comprehension : ''}
-                      </p>
+                      </p>                      
+                        {singleQuestion && activeSubject === 'ENGLISH LANGUAGE' && singleQuestion.comprehension ?
+                        (<p className='text-sm text-black border-b max-h-[200px] p-1 shadow overflow-y-auto' >{singleQuestion.comprehension}</p>) : ''}
+                  
                       <p className="text-gray-500 text-base">
                         Question <span>{singleIndex + 1}</span>
                       </p>
-                      <p className="text-gray-900 font-semibold">
+                      <p className="text-gray-900 font-semibold text-base">
                         {/* {singleQuestion && singleQuestion.question_value} */}
                         {singleQuestion && renderMath(singleQuestion.question_value) }                       
                       </p>
@@ -409,7 +414,7 @@ const ExamsActive = () => {
                     <div className="options-body mt-3 text-black text-sm md:text-base">
                       <ul question_id={singleQuestion && singleQuestion.question_id} >
                         {singleQuestion && singleQuestion.options.map((option, optionIndex) => (
-                          <li key={optionIndex} question_id={singleQuestion && singleQuestion.question_id} className="w-full bg-gray flex items-center p-1 mt-1 hover:bg-green-100">
+                          <li key={optionIndex} question_id={singleQuestion && singleQuestion.question_id} className="w-full bg-gray-100 flex items-center p-1 mt-1 hover:bg-green-100">
                             <span className="pr-1 flex items-center">
                               <input
                                 question_id={singleQuestion && singleQuestion.question_id}
@@ -451,7 +456,7 @@ const ExamsActive = () => {
                 index_value={index + 1}
                 key={index}
                 href={`#num${index + 1}`}
-                className={`cursor-pointer border rounded ${getBgColor(index, item.question_id)} flex items-center justify-center question-index-number w-full gap-1 h-6`}
+                className={`cursor-pointer border border-gray-50 rounded ${getBgColor(index, item.question_id)} flex items-center justify-center question-index-number w-full gap-1 h-6`}
               >
                 {index + 1}
               </span>
